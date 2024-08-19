@@ -143,8 +143,8 @@ const ProductsPage = () => {
             </h1>
             <p className='mt-6 text-lg leading-8 text-gray-600'>@longlikun</p>
 
-            {mutation.isError && <ShowDialog isSuccess={false}></ShowDialog>}
-            {mutation.isSuccess && <ShowDialog isSuccess={true}></ShowDialog>}
+            {mutation.isError && <ShowDialog isSuccess={false} action='下载'></ShowDialog>}
+            {mutation.isSuccess && <ShowDialog isSuccess={true} action='下载'></ShowDialog>}
 
             <div className='mt-10 flex items-center justify-center gap-x-6'>
               <button
@@ -156,7 +156,7 @@ const ProductsPage = () => {
               </button>
             </div>
             {mutation.isPending && (
-              <ProgressBar downloadProgress={downloadProgress}></ProgressBar>
+              <ProgressBar progress={downloadProgress}></ProgressBar>
             )}
           </div>
         </div>

@@ -1,21 +1,21 @@
 import React from 'react'
 
 interface ProgressProps {
-    downloadProgress: number
+    progress: number
 
 }
 const ProgressBar: React.FC<ProgressProps> = ({
-    downloadProgress
+    progress
 
 }) => {
     return (
         <div className="mx-5 my-10 h-4 rounded-full bg-gray-200 ">
 
-            <div className="h-4 rounded-full bg-green-500 w-1/2" style={{ width: `${downloadProgress}%` }} ></div>
+            <div className="h-4 rounded-full bg-green-500 w-1/2" style={{ width: `${progress}%` }} ></div>
 
             <div className="mt-4 flex items-center justify-between text-sm">
                 <div className="text-gray-600">下载进度</div>
-                <div className="text-gray-600">{downloadProgress}%</div>
+                <div className="text-gray-600">{progress}%</div>
             </div>
         </div>
     )

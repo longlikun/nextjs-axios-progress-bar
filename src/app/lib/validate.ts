@@ -20,7 +20,7 @@ export const validationSchema = z.object({
     .custom<FileList>((v) => v instanceof FileList)
     .transform((val) => {
       console.log("val:", val); // 调试信息：打印输入值
-      if (val instanceof File) return val;
+      // if (val instanceof File) return val;
       if (val instanceof FileList) return val[0];
       return null;
 
@@ -28,11 +28,7 @@ export const validationSchema = z.object({
     // 验证文件大小
     .refine(
       (file) => file instanceof File && file.size <= MAX_FILE_SIZE,
-
-      {
-        message: `文件大小不能超过 ${MAX_FILE_SIZE / (1024 * 1024)} MB`,
-
-      }
+      {message: `文件大小不能超过 ${MAX_FILE_SIZE / (1024 * 1024)} MB`, }
     )
     // 验证文件类型
     .refine(
@@ -41,9 +37,7 @@ export const validationSchema = z.object({
         ACCEPTED_IMAGE_TYPES.includes(
           file.type
         ),
-      {
-        message: '类型不支持,请选择 (jpeg, jpg, png, webp)类型',
-      }
+      { message: '类型不支持,请选择 (jpeg, jpg, png, webp)类型', }
     )
   // .superRefine((file, ctx) => {
   //      console.log("val:", file); // 调试信息：打印输入值
