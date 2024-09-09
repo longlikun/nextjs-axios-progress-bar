@@ -17,7 +17,7 @@ export const validationSchema = z.object({
     .min(4, '名称不能小于4个字符')
     .max(200, '名称最多为200个字符'),
   fileUpload: z
-    .custom<FileList>((v) => v instanceof FileList)
+    .custom<FileList>((v) => v instanceof FileList,{message:"文件无效"})
     .transform((val) => {
       console.log("val:", val); // 调试信息：打印输入值
       // if (val instanceof File) return val;

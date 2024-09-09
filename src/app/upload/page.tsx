@@ -68,7 +68,7 @@ export default function UploadPage() {
         mutationFn: async (data: UploadFormInputs) => {
             const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
             const url = `${API_BASE_URL}/upload`;
-            console.log("handle",data)
+            console.log("handle", data)
 
             if (data.fileUpload instanceof File) {
                 const formData = new FormData();
@@ -88,7 +88,7 @@ export default function UploadPage() {
                 return response.data;
             }
         },
-   
+
         onSuccess: (data) => {
             setShowUploadProgress(false);
             // console.log('File uploaded successfully', data);
@@ -97,7 +97,7 @@ export default function UploadPage() {
         onError: (error) => {
             // console.error('Failed to upload file', error);
         },
-        onSettled:()=>{
+        onSettled: () => {
             setShowUploadProgress(false)
             setUploadProgress(0);
             reset();
@@ -116,8 +116,8 @@ export default function UploadPage() {
                     上传文件进度条
                 </h1>
                 {showUploadProgress && (
-              <ProgressBar progress={uploadProgress}></ProgressBar>
-            )}
+                    <ProgressBar progress={uploadProgress}></ProgressBar>
+                )}
 
                 <p className='mx-auto mt-4 max-w-md text-center text-gray-500'>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
@@ -194,6 +194,7 @@ export default function UploadPage() {
                                             <span>{fileName}</span>
                                             <span onClick={handleRemoveFile}> 删除</span>
                                         </div>
+                                        
 
                                     ) : (
 
@@ -214,12 +215,14 @@ export default function UploadPage() {
                                         className='sr-only'
                                         onChange={handleFileChange}
                                     />
-                                    {errors?.fileUpload && (
+                                    {errors.fileUpload && (
                                         <p className='text-red-500 '>
-                                            ⚠ {errors?.fileUpload?.message}
+                                            ⚠ {errors.fileUpload.message}
                                         </p>
                                     )}
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
